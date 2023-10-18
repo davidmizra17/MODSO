@@ -1,4 +1,15 @@
-# React + Vite
+# MODSO
+
+#### Developers
+
+- Para inicializar los paquetes utilizados por primera vez correr el comando: `npm install`
+- Una vez inicializado, para iniciar el live localhost server y empezar a programar `npm run dev`
+
+###### A continuación el template del framework utilizado
+
+------------
+
+## React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
