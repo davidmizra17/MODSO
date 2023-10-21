@@ -1,7 +1,7 @@
 Integrantes: 
 Armonia Romero
 Guillermo Sanfuentes
-David Mizrachi
+David Mizrahi
 Roy Rodriguez
 
 To-Do list:
