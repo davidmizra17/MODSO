@@ -1,12 +1,12 @@
 import React from 'react';
 
-const NotFoundPage = () => {
+const Catalogo = () => {
     return (
         <div>
-            <h1>404 Page Not Found</h1>
-            <p>The page you are looking for does not exist.</p>
+            <h1>Catalogo</h1>
+            <p>Aqui se deberia de mostrar el catalogo</p>
         </div>
     );
 };
 
-export default NotFoundPage;
+export default Catalogo;
