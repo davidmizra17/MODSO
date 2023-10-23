@@ -1,6 +1,10 @@
 # MODSO
 
-[TOC]
+- [Integrantes Ideas](https://github.com/davidmizra17/MODSO/tree/develop#integrantes-marketing-ideas-emprendedoras)
+- [Integrantes DevOps](https://github.com/davidmizra17/MODSO/tree/develop#integrantes-devops-ing-software)
+- [To-Do](https://github.com/davidmizra17/MODSO/tree/develop#to-do-list)
+
+***
 
 ## Integrantes Marketing (Ideas Emprendedoras)
 
@@ -14,10 +18,10 @@
 
 ## Integrantes DevOps (Ing. Software)
 
-- Armonia Romero [@romeroac]
-- Guillermo Sanfuentes [@GuilleSanfuentes]
-- David Mizrahi [@davidmizra17]
-- Roy Rodriguez [@royvicente90]
+- Armonia Romero [[@romeroac](https://github.com/romeroac)]
+- Guillermo Sanfuentes [[@GuilleSanfuentes](https://github.com/GuilleSanfuentes)]
+- David Mizrahi [[@davidmizra17](https://github.com/davidmizra17)]
+- Roy Rodriguez [[@royvicente90](https://github.com/royvicente90)]
 
 ## To-Do list
 
