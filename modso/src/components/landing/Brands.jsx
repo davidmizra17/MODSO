@@ -51,7 +51,7 @@ export default function Brands() {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        className="hola"
+        wrapperClass="px-16"
       >
         {brands}
       </Swiper>
