@@ -11,16 +11,17 @@ export default function Header() {
           gap-4 md:gap-16"
         >
           <li className="font-bold">Home</li>
-          <li>Productos</li>
-          <li>Login</li>
+          {/*<li>Productos</li>
+          <li>Login</li>*/}
 
           <button
             className="bg-primary-500 px-6 py-4 rounded-full
             text-2xl text-white uppercase transition
              hover:bg-primary-400 hover:scale-95
              active:bg-primary-700"
+            href="catalogo"
           >
-            Regístrate
+            Ver catalogo
           </button>
         </ul>
       </nav>
