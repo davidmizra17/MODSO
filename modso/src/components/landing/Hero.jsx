@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import womanImage from "../../assets/images/woman.webp";
 import wardrobeImage from "../../assets/images/wardrobe.jpg";
 import stackImage from "../../assets/images/stack.jpg";
@@ -19,13 +20,15 @@ export default function Hero() {
           industria de la moda.{" "}
         </p>
 
+        <Link to="/catalogo">
         <button
           className="border rounded-lg px-2 py-4 border-primary-700 
           uppercase active:text-white 
           hover:scale-95 active:bg-primary-400 transition"
         >
           Shop Now
-        </button>
+          </button>
+        </Link>
       </aside>
 
       <aside

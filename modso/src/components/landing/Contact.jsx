@@ -1,8 +1,9 @@
 import { AiOutlineInstagram } from "react-icons/ai";
 import { LiaFacebookSquare } from "react-icons/lia";
-import { BsTiktok } from "react-icons/bs";
+import { BsWhatsapp } from "react-icons/bs";
 
 import logo from "../../assets/images/logo.webp";
+import { Link } from "react-router-dom";
 
 export default function Contact() {
   return (
@@ -15,11 +16,11 @@ export default function Contact() {
         flex justify-around gap-4 items-center relative"
       >
         
-        <LiaFacebookSquare size={86} />
-        <AiOutlineInstagram size={86} />
+        
+        <Link to="https://www.instagram.com/p/Cyeh0bgu22z/" ><AiOutlineInstagram size={86} /></Link>
         {/* TODO - Buscar mejor color */}
         <div className="rounded-md border-4 p-2 border-blue-950">
-          <BsTiktok size={52} />
+          <Link to="https://wa.me/584242421040" ><BsWhatsapp size={52} /></Link>
         </div>
 
         {/* <img
