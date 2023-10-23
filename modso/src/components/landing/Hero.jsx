@@ -5,8 +5,11 @@ import stackImage from "../../assets/images/stack.jpg";
 export default function Hero() {
   return (
     <section className="flex max-md:flex-col gap-4 justify-center bg-secondary-100 px-6 pb-16">
-      <aside className="pl-16 ">
-        <h1 className="text-6xl font-bold -translate-y-[45%]  ">
+      <aside className="sm:pl-16 max-md:mb-4">
+        <h1
+          className="text-5xl font-bold 
+        md:text-6xl  -translate-y-[45%]"
+        >
           Moda Sostenible
         </h1>
         <p className="text-lg max-w-prose mb-4 ">
@@ -31,22 +34,27 @@ export default function Hero() {
           grid-cols-[repeat(1,_25rem)] md:grid-cols-[repeat(2,_22rem)] 
           grid-rows-[repeat(1,_30rem)] md:grid-rows-[repeat(2,_15em)]"
       >
-        <div className="row-span-2 self-center relative star imgStarWoman brownStar">
+        <div
+          className="row-span-2 self-center relative 
+            star imgStarWoman brownStar"
+        >
           <img
             src={womanImage}
             alt="Woman"
-            className="h-[30rem] w-[25rem] object-cover
+            className="h-[30rem] w-full md:w-auto object-cover
               rounded-sm shadow-lg shadow-gray-300"
           />
         </div>
-        {/* TODO - Ponerlos pegados abajo del container de su grid  */}
         <img
           src={wardrobeImage}
           alt="wardrobe"
-          className="rounded-sm shadow-lg  h-56 w-56 object-cover "
+          className="rounded-sm shadow-lg  h-56 w-56 object-cover"
         />
 
-        <div className="relative w-44 star imgStarStack whiteStar">
+        <div
+          className="relative w-44 
+            star imgStarStack whiteStar"
+        >
           <img
             className="rounded-sm shadow-lg h-44 w-44 object-cover "
             src={stackImage}
