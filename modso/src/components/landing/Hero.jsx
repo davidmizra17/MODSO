@@ -4,7 +4,7 @@ import stackImage from "../../assets/images/stack.jpg";
 
 export default function Hero() {
   return (
-    <section className="flex max-md:flex-col gap-4 justify-center bg-secondary-100 px-6">
+    <section className="flex max-md:flex-col gap-4 justify-center bg-secondary-100 px-6 pb-16">
       <aside className="pl-16 ">
         <h1 className="text-6xl font-bold -translate-y-[45%]  ">
           Moda Sostenible
@@ -26,11 +26,12 @@ export default function Hero() {
       </aside>
 
       <aside
-        className="grid gap-2 md:-translate-y-[14%] md:max-w-[40rem]
+        className="grid gap-2 md:-translate-y-[14%] md:max-w-[40rem] 
+          max-md:justify-center max-md:justify-items-center
           grid-cols-[repeat(1,_25rem)] md:grid-cols-[repeat(2,_22rem)] 
           grid-rows-[repeat(1,_30rem)] md:grid-rows-[repeat(2,_15em)]"
       >
-        <div className="row-span-2  self-center relative imgStar">
+        <div className="row-span-2 self-center relative star imgStarWoman brownStar">
           <img
             src={womanImage}
             alt="Woman"
@@ -44,11 +45,14 @@ export default function Hero() {
           alt="wardrobe"
           className="rounded-sm shadow-lg  h-56 w-56 object-cover "
         />
-        <img
-          className="rounded-sm shadow-lg h-44 w-44 object-cover "
-          src={stackImage}
-          alt="stack"
-        />
+
+        <div className="relative w-44 star imgStarStack whiteStar">
+          <img
+            className="rounded-sm shadow-lg h-44 w-44 object-cover "
+            src={stackImage}
+            alt="stack"
+          />
+        </div>
       </aside>
     </section>
   );
