@@ -2,6 +2,8 @@ import React from "react";
 import womanImg from "../../assets/images/categories/woman.png";
 import manImg from "../../assets/images/categories/man.png";
 import childrenImg from "../../assets/images/categories/children.png";
+import { Link } from "react-router-dom";
+
 
 export default function Categories() {
   const categories = [
@@ -33,13 +35,13 @@ export default function Categories() {
   return (
     <section className="bg-secondary-100 p-8">
       <h1 className="text-center font-bold text-3xl pt-4 mb-8">Categorías</h1>
-
+      <Link to="/catalogo">
       <main
         className="py-4 md:px-4 bg-primary-200 rounded-md
           flex max-md:flex-col gap-4 items-center justify-around"
       >
         {categories}
-      </main>
+      </main></Link>
     </section>
   );
 }
