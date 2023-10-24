@@ -9,6 +9,7 @@ import gucciLogo from "../../assets/images/brands/gucci.webp";
 import hmLogo from "../../assets/images/brands/h&m.png";
 import levisLogo from "../../assets/images/brands/levis.webp";
 import zaraLogo from "../../assets/images/brands/zara.webp";
+import { Link } from "react-router-dom";
 
 export default function Brands() {
   const brands = [
@@ -41,6 +42,7 @@ export default function Brands() {
   return (
     <section>
       <h1 className="text-center font-bold text-3xl mb-8">Marcas</h1>
+      <Link to="/catalogo">
       <Swiper
         modules={[Autoplay, Navigation]}
         navigation={true}
@@ -53,8 +55,10 @@ export default function Brands() {
         }}
         wrapperClass="px-16"
       >
+      
         {brands}
       </Swiper>
+      </Link>
       ;
     </section>
   );

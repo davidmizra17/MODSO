@@ -29,6 +29,17 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "heathers": [
+      {
+      "source": "*/.jsx",
+      "heathers": [
+        {
+          "key": "Content-Type",
+          "value": "text/jsx"
+        }
+      ]
+      }
     ]
   }
 }
