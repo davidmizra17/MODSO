@@ -1,6 +1,13 @@
 // Import the functions you need from the SDKs you need
+
+// /node_modules/.vite/deps/firebase_app.js?v=a423092a
+
+
+// import { firebase } from "firebase/app";
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
+import "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,4 +26,5 @@ export const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// const analytics = firebase.firestore();
+export const db = getFirestore(app);

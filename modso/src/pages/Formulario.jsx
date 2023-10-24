@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import Header from '../components/Header';
-import { app, firebaseConfig } from '../.././firebase/config.js';
+import { app, firebaseConfig, db } from '../.././firebase/config.js';
+import { doc, setDoc, collection } from "firebase/firestore"; 
+
     
 
 const Formulario = () => {
@@ -12,7 +14,7 @@ const Formulario = () => {
     const [img, setImg] = useState('');
     const [item, setItem] = useState('');
     const [price, setPrice] = useState('');
-    const [postData, setPostData] = useState({ message: '' });
+    // const [postData, setPostData] = useState({ message: '' });
 
     const [error, setError] = useState(false);
 
@@ -41,7 +43,7 @@ const Formulario = () => {
     
 
     
-    const handleSubmit = (e) => {
+    const handleSubmit =  (e) => {
         e.preventDefault();
 
         // FORM VALIDATION
@@ -63,23 +65,40 @@ const Formulario = () => {
             price
             
         }
-        setPostData(objetoUser);
+        // setPostData(objetoUser);
         const firebaseUrl = firebaseConfig.firebaseUrl;
 
-        fetch(`${firebaseUrl}/Products.json`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(postData),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('Data posted:', data);
-            })
-            .catch((error) => {
-                console.error('Error posting data:', error);
-            });
+       // Add a new document in collection "cities"
+// db.collection("Products").set({
+//     categoria: categoria,
+//     contactId: contactId,
+//     contactName: contactName,
+//     contactNumber: contactNumber,
+//     img: img,
+//     item: item,
+//     price: price
+// })
+// .then(() => {
+//     console.log("Document successfully written!");
+// })
+// .catch((error) => {
+//     console.error("Error writing document: ", error);
+        // });
+        useEffect(async() => {
+
+     const citiesRef = collection(db, "Products");
+        await setDoc(doc(citiesRef, "DM"), {
+            categoria: "hola",
+            contactId: "oihfwe",
+            contactName: "iuebf",
+            contactNumber: "wjdbfi",
+            img: "oefe",
+            item: "{item}",
+            price: "{price}"
+
+  }, [objetoUser])
+       
+});
         
   
 
@@ -104,11 +123,13 @@ const Formulario = () => {
         
 
         //REINICIAMOS EL FORM
-        setEmail('')
-        setFecha('')
-        setNombre('')
-        setSintomas('')
-        setPropietario('')
+        setCategoria('')
+        setContactId('')
+        setContactName('')
+        setContactNumber('')
+        setImg('')
+        setItem('')
+        setPrice('')
 
         
         console.log("enviando form");
