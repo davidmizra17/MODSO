@@ -1,11 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import Header from '../components/Header';
-import { app, firebaseConfig } from './firebase/config.js';
+import { app, firebaseConfig } from '../.././firebase/config.js';
     
 
 const Formulario = () => {
-    <Header />
     const [categoria, setCategoria] = useState('');
     const [contactId, setContactId] = useState('');
     const [contactName, setContactName] = useState('');
@@ -67,7 +66,7 @@ const Formulario = () => {
         setPostData(objetoUser);
         const firebaseUrl = firebaseConfig.firebaseUrl;
 
-        fetch(`${firebaseUrl}/users.json`, {
+        fetch(`${firebaseUrl}/Products.json`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -81,6 +80,7 @@ const Formulario = () => {
             .catch((error) => {
                 console.error('Error posting data:', error);
             });
+        
   
 
 
@@ -115,127 +115,127 @@ const Formulario = () => {
     };
 
     return (
-        <div className="md:w-1/2 lg:w-2/5 mx-5">
-            <h2 className='font-black text-3xl text-center'>
-                Inserte un producto
-            </h2>
-            <p className='text-xl mt-5 text-center mb-10'>
-                Añade pacientes y {''}
-                <span className='text-brown-600 font-bold'>adminístralos</span>
-            </p>
-            <form onSubmit={handleSubmit}
-            
-                className='bg-white shadow-md rounded-lg py-10 px-5 mb-10' >
-                {error && <Error mensaje='Todos los campos son obligatorios' />}
+        <div>
+            <Header />
+            <div className="md:w-1/2 lg:w-2/5 mx-5">
+                <h2 className='font-black text-3xl text-center'>
+                    Inserte un producto
+                </h2>
+                <p className='text-xl mt-5 text-center mb-10'>
+                    Añade pacientes y {''}
+                    <span className='text-brown-600 font-bold'>adminístralos</span>
+                </p>
+                <form onSubmit={handleSubmit}
                 
-                <div className='mb-5'>
-                    <label htmlFor="name" className='block text-gray-700 uppercase'>
-                        Nombre
-                    </label>
-
-                    <input
-                        id='name'
-                        type="text"
-                        placeholder='Nombre'
-                        className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md'
-                        value={contactName}
-                        onChange={(e) => setContactName(e.target.value)}
-                    />
-                </div>
-
-                <div className='mt-5'>
-                    <label htmlFor="categoria" className='block text-gray-700 uppercase'>
-                        Nombre Categoria</label>
-
-                    <input
-                        id='categoria'
-                        type="text"
-                        placeholder='Inserte la categoria del producto'
-                        className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md'
-                        value={categoria}
-                        onChange={(e) => setCategoria(e.target.value)}
-                    />
-                </div>
-                <div className='mt-5'>
-                    <label htmlFor="item" className='block text-gray-700 uppercase'>
-                        Ingrese Producto</label>
-
-                    <input
-                        id='item'
-                        type="text"
-                        placeholder='Descripcion del producto'
-                        className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md'
-                        value={item}
-                        onChange={(e) => setItem(e.target.value)}
-                    />
-                </div>
-
-                {/* <div className='mt-5'>
-                    <label htmlFor="contactId" className='block text-gray-700 uppercase'>
-                        Alta</label>
-
-                    <input
-                        id='contactId'
-                        type="number"
-                        className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md'
-                        value={contactId}
-                        onChange={(e) => setContactId(e.target.value)}
-                    />
-                </div> */}
-
-                <div className='mt-5'>
-                    <label htmlFor="contactNumber" className='block text-gray-700 uppercase'>
-                        Numero telefónico</label>
-
-                    <input
-                        name="contactNumber"
-                        id="contactNumber"
-                        type="text"
-                        placeholder='ingerese número telefónico'
-                        value={contactNumber}
-                        onChange={(e) => setContactNumber(e.target.value)}
-                    />
+                    className='bg-white shadow-md rounded-lg py-10 px-5 mb-10' >
+                    {error && <Error mensaje='Todos los campos son obligatorios' />}
                     
-                </div>
-            
-                <div className='mt-5'>
-                    <label htmlFor="price" className='block text-gray-700 uppercase'>
-                        Precio del Producto</label>
+                    <div className='mb-5'>
+                        <label htmlFor="name" className='block text-gray-700 uppercase'>
+                            Nombre
+                        </label>
+
+                        <input
+                            id='name'
+                            type="text"
+                            placeholder='Nombre'
+                            className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md'
+                            value={contactName}
+                            onChange={(e) => setContactName(e.target.value)}
+                        />
+                    </div>
+
+                    <div className='mt-5'>
+                        <label htmlFor="categoria" className='block text-gray-700 uppercase'>
+                            Nombre Categoria</label>
+
+                        <input
+                            id='categoria'
+                            type="text"
+                            placeholder='Inserte la categoria del producto'
+                            className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md'
+                            value={categoria}
+                            onChange={(e) => setCategoria(e.target.value)}
+                        />
+                    </div>
+                    <div className='mt-5'>
+                        <label htmlFor="item" className='block text-gray-700 uppercase'>
+                            Ingrese Producto</label>
+
+                        <input
+                            id='item'
+                            type="text"
+                            placeholder='Descripcion del producto'
+                            className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md'
+                            value={item}
+                            onChange={(e) => setItem(e.target.value)}
+                        />
+                    </div>
+
+                    {/* <div className='mt-5'>
+                        <label htmlFor="contactId" className='block text-gray-700 uppercase'>
+                            Alta</label>
+
+                        <input
+                            id='contactId'
+                            type="number"
+                            className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md'
+                            value={contactId}
+                            onChange={(e) => setContactId(e.target.value)}
+                        />
+                    </div> */}
+
+                    <div className='mt-5'>
+                        <label htmlFor="contactNumber" className='block text-gray-700 uppercase'>
+                            Numero telefónico</label>
+
+                        <input
+                            name="contactNumber"
+                            id="contactNumber"
+                            type="text"
+                            placeholder='ingerese número telefónico'
+                            className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md'
+                            value={contactNumber}
+                            onChange={(e) => setContactNumber(e.target.value)}
+                        />
+                        
+                    </div>
+                
+                    <div className='mt-5'>
+                        <label htmlFor="price" className='block text-gray-700 uppercase'>
+                            Precio del Producto</label>
+
+                        <input
+                            id='price'
+                            type="text"
+                            className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md'
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                        />
+                    </div>
+                
+                    <div className='mt-5'>
+                        <label htmlFor="img" className='block text-gray-700 uppercase'>
+                            Adjunte Foto(s)</label>
+
+                        <input
+                            id='img'
+                            type="text"
+                            className='border-2 w-full p-2 mt-2 mb-5 placeholder-gray-400 rounded-md'
+                            value={img}
+                            onChange={(e) => setImg(e.target.value)}
+                        />
+                    </div>
 
                     <input
-                        id='price'
-                        type="text"
-                        className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md'
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
+                        type="submit"
+                        className='bg-indigo-600 w-full p-3 rounded-md text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-all'
+                        value={'Agregar Producto'}
                     />
-                </div>
-            
-                <div className='mt-5'>
-                    <label htmlFor="img" className='block text-gray-700 uppercase'>
-                        Adjunte Foto(s)</label>
-
-                    <input
-                        id='img'
-                        type="text"
-                        className='border-2 w-full p-2 mt-2 mb-5 placeholder-gray-400 rounded-md'
-                        value={img}
-                        onChange={(e) => setImg(e.target.value)}
-                    />
-                </div>
-
-                <input
-                    type="submit"
-                    className='bg-indigo-600 w-full p-3 rounded-md text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-all'
-                    value={'Agregar Producto'}
-                />
-            </form>
-
+                </form>
+            </div>
         </div>
 
-
-
-        
     )
             }
   
