@@ -29,6 +29,16 @@ export default function Hero() {
           Shop Now
           </button>
         </Link>
+
+        <Link to="/formulario">
+        <button
+          className="border rounded-lg px-2 py-4 border-primary-700 
+          uppercase active:text-white 
+          hover:scale-95 active:bg-primary-400 transition"
+        >
+          Sell Now
+          </button>
+        </Link>
       </aside>
 
       <aside
