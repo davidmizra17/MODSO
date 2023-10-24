@@ -24,7 +24,7 @@
   },
   "hosting": {
     "site": "modso",
-    "public": "public",
+    "public": "src",
     "ignore": [
       "firebase.json",
       "**/.*",
