@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import Header from '../components/Header';
+import { app, firebaseConfig } from './firebase/config.js';
     
 
 const Formulario = () => {
@@ -11,7 +12,8 @@ const Formulario = () => {
     const [contactNumber, setContactNumber] = useState('');
     const [img, setImg] = useState('');
     const [item, setItem] = useState('');
-    const [price, setPrice] = useState(0);
+    const [price, setPrice] = useState('');
+    const [postData, setPostData] = useState({ message: '' });
 
     const [error, setError] = useState(false);
 
@@ -51,7 +53,7 @@ const Formulario = () => {
         }
         setError(false);
 
-        //OBJETO PACIENTE
+        //OBJETO USER
         const objetoUser = {
             categoria,
             contactId,
@@ -62,23 +64,42 @@ const Formulario = () => {
             price
             
         }
+        setPostData(objetoUser);
+        const firebaseUrl = firebaseConfig.firebaseUrl;
 
-        if (paciente.id) {
-            //EDITANDO REGISTRO
-            objetoPaciente.id = paciente.id
-            console.log(objetoPaciente)
-            console.log(paciente)
+        fetch(`${firebaseUrl}/users.json`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(postData),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Data posted:', data);
+            })
+            .catch((error) => {
+                console.error('Error posting data:', error);
+            });
+  
 
-            const pacientesActualizados = pacientes.map(pacienteState => pacienteState.id === paciente.id ? objetoPaciente : pacienteState)
-            setPacientes(pacientesActualizados)
-            setPaciente({})
+
+        // if (paciente.id) {
+        //     //EDITANDO REGISTRO
+        //     objetoPaciente.id = paciente.id
+        //     console.log(objetoPaciente)
+        //     console.log(paciente)
+
+        //     const pacientesActualizados = pacientes.map(pacienteState => pacienteState.id === paciente.id ? objetoPaciente : pacienteState)
+        //     setPacientes(pacientesActualizados)
+        //     setPaciente({})
 
 
-        } else {
-            //NUEVO REGISTRO
-            objetoPaciente.id = generarId();
-            setPacientes([...pacientes, objetoPaciente]);
-        }
+        // } else {
+        //     //NUEVO REGISTRO
+        //     objetoPaciente.id = generarId();
+        //     setPacientes([...pacientes, objetoPaciente]);
+        // }
 
         
 
@@ -91,16 +112,16 @@ const Formulario = () => {
 
         
         console.log("enviando form");
-    }
+    };
 
     return (
         <div className="md:w-1/2 lg:w-2/5 mx-5">
             <h2 className='font-black text-3xl text-center'>
-                Seguimiento de Pacientes
+                Inserte un producto
             </h2>
             <p className='text-xl mt-5 text-center mb-10'>
                 Añade pacientes y {''}
-                <span className='text-indigo-600 font-bold'>adminístralos</span>
+                <span className='text-brown-600 font-bold'>adminístralos</span>
             </p>
             <form onSubmit={handleSubmit}
             
@@ -183,7 +204,7 @@ const Formulario = () => {
 
                     <input
                         id='price'
-                        type="number"
+                        type="text"
                         className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md'
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
@@ -196,8 +217,8 @@ const Formulario = () => {
 
                     <input
                         id='img'
-                        type="image"
-                        className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md'
+                        type="text"
+                        className='border-2 w-full p-2 mt-2 mb-5 placeholder-gray-400 rounded-md'
                         value={img}
                         onChange={(e) => setImg(e.target.value)}
                     />
@@ -216,7 +237,7 @@ const Formulario = () => {
 
         
     )
-}
+            }
   
 
 export default Formulario
