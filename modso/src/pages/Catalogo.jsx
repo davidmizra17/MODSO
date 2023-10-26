@@ -1,6 +1,25 @@
+import { db } from '../../firebase/config';
+import { collection, getDocs } from 'firebase/firestore'
+import { useEffect } from 'react';
 import Header from '../components/Header';
 
 const Catalogo = () => {
+    //data fetch
+    useEffect(() => {
+        
+        (async () => {
+            console.log("hablale andamos en catalogo mi rey")
+            
+            const colRef = collection(db, 'Products')
+            
+            const snapshots = await getDocs(colRef)
+
+            const docs = snapshots.docs.map( doc => doc.data())
+
+            console.log(docs)
+        })()
+        
+    },[])
     return (
         <div>
             <Header />
