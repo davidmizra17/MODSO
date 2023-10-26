@@ -5,7 +5,6 @@
     const Card = ({ product }) => {
         const [isModalOpen, setIsModalOpen] = useState(false);
         const [showModalBuy, setShowModalBuy] = useState(false);
-        const [showModalSeller, setShowModalSeller] = useState(false);
 
         const openModal = () => {
             setIsModalOpen(true);
@@ -21,14 +20,6 @@
 
         const closeModalBuy = () => {
             setShowModalBuy(false);
-        };
-
-        const openModalSeller = () => {
-            setShowModalSeller(true);
-        };
-
-        const closeModalSeller = () => {
-            setShowModalSeller(false);
         };
 
         return (
@@ -54,7 +45,7 @@
                             </p>
                         </div>
                         <button className="bg-primary-500 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-full absolute -bottom-3 -right-4" onClick={openModalBuy}>
-                            Buy Now
+                            Comprar
                         </button>
                     </div>
                 </div>
