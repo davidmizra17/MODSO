@@ -67,6 +67,7 @@ const Formulario = () => {
         setPrice('')
 
         
+        
         console.log("enviando form");
     };
 
@@ -77,10 +78,6 @@ const Formulario = () => {
                 <h2 className='font-black text-3xl text-center'>
                     Inserte un producto
                 </h2>
-                <p className='text-xl mt-5 text-center mb-10'>
-                    Añade pacientes y {''}
-                    <span className='text-brown-600 font-bold'>adminístralos</span>
-                </p>
                 <form onSubmit={handleSubmit}
                 
                     className='bg-white shadow-md rounded-lg py-10 px-5 mb-10' >
