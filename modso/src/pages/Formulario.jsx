@@ -7,7 +7,7 @@ import { doc, setDoc, collection, Timestamp, addDoc } from "firebase/firestore";
 
     
 
-const Formulario = () => {
+const Formulario = ({ closeModal }) => {
     const [categoria, setCategoria] = useState('');
     const [contactId, setContactId] = useState('');
     const [contactName, setContactName] = useState('');
@@ -69,18 +69,19 @@ const Formulario = () => {
         
         
         console.log("enviando form");
+
+        closeModal();
     };
 
     return (
         <div>
-            <Header />
-            <div className="md:w-1/2 lg:w-2/5 mx-5">
+            
                 <h2 className='font-black text-3xl text-center'>
                     Inserte un producto
                 </h2>
                 <form onSubmit={handleSubmit}
                 
-                    className='bg-white shadow-md rounded-lg py-10 px-5 mb-10' >
+                    className='bg-white shadow-md rounded-lg' >
                     {/* {error && <Error mensaje='Todos los campos son obligatorios' />} */}
                     
                     <div className='mb-5'>
@@ -105,7 +106,7 @@ const Formulario = () => {
                         <input
                             id='categoria'
                             type="text"
-                            placeholder='Inserte la categoria del producto'
+                            placeholder='Inserte la categoria del producto (Hombre, Mujer o Niños)'
                             className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md'
                             value={categoria}
                             onChange={(e) => setCategoria(e.target.value)}
@@ -135,7 +136,7 @@ const Formulario = () => {
                             name="contactNumber"
                             id="contactNumber"
                             type="text"
-                            placeholder='ingerese número telefónico'
+                            placeholder='Ingrese número telefónico'
                             className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md'
                             value={contactNumber}
                             onChange={(e) => setContactNumber(e.target.value)}
@@ -145,7 +146,7 @@ const Formulario = () => {
                 
                     <div className='mt-5'>
                         <label htmlFor="price" className='block text-gray-700 uppercase'>
-                            Precio del Producto</label>
+                            Precio del Producto (en $)</label>
 
                         <input
                             id='price'
@@ -158,7 +159,7 @@ const Formulario = () => {
                 
                     <div className='mt-5'>
                         <label htmlFor="img" className='block text-gray-700 uppercase'>
-                            Adjunte Foto(s)</label>
+                            Adjunte Foto(s) (URL)</label>
 
                         <input
                             id='img'
@@ -189,7 +190,6 @@ const Formulario = () => {
                     />
                 </form>
             </div>
-        </div>
 
     )
             }
