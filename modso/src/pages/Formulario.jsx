@@ -19,7 +19,9 @@ const Formulario = ({ closeModal }) => {
 
     const [error, setError] = useState(false);
 
-
+    function refreshPage() {
+    window.location.reload(false);
+  }
     
     const handleSubmit =  async(e) => {
         e.preventDefault();
@@ -71,6 +73,7 @@ const Formulario = ({ closeModal }) => {
         console.log("enviando form");
 
         closeModal();
+        refreshPage();
     };
 
     return (
