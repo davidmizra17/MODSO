@@ -50,12 +50,10 @@ const Formulario = ({ closeModal }) => {
         };
         const colRef = collection(db, 'Products')
         await addDoc(colRef, objetoUser)
-        // () => createDoc(objetoUser);
+        
         setError(false);
 
-        //OBJETO USER
-        
-        // console.log(postData);
+      
         
         
 
@@ -188,7 +186,7 @@ const Formulario = ({ closeModal }) => {
 
                     <input
                         type="submit"
-                        className='bg-indigo-600 w-full p-3 rounded-md text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-all'
+                        className='bg-primary-500 w-full p-3 rounded-md text-white uppercase font-bold hover:bg-primary-700 cursor-pointer transition-all'
                         value={'Agregar Producto'}
                     />
                 </form>
