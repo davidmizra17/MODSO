@@ -23,7 +23,6 @@ export default function Header() {
             text-2xl text-white uppercase transition
              hover:bg-primary-400 hover:scale-95
              active:bg-primary-700"
-            href="catalogo"
           >
             Ver catalogo
           </button></Link>

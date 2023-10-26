@@ -1,8 +1,6 @@
 import { AiOutlineInstagram } from "react-icons/ai";
-import { LiaFacebookSquare } from "react-icons/lia";
 import { BsWhatsapp } from "react-icons/bs";
 
-import logo from "../../assets/images/logo.webp";
 import { Link } from "react-router-dom";
 
 export default function Contact() {
