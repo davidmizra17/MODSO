@@ -8,7 +8,7 @@ const Catalogo = () => {
     useEffect(() => {
         
         (async () => {
-            console.log("hablale andamos en catalogo mi rey")
+            
             
             const colRef = collection(db, 'Products')
             
