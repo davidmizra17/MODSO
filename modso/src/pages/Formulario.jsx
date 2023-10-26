@@ -1,7 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import Header from '../components/Header';
-import { app, firebaseConfig } from '../.././firebase/config.js';
+import { createDoc } from '../../crud';
+import { app, firebaseConfig, db } from '../.././firebase/config.js';
+import { doc, setDoc, collection, Timestamp, addDoc } from "firebase/firestore"; 
+
     
 
 const Formulario = () => {
@@ -12,103 +15,56 @@ const Formulario = () => {
     const [img, setImg] = useState('');
     const [item, setItem] = useState('');
     const [price, setPrice] = useState('');
-    const [postData, setPostData] = useState({ message: '' });
+    const [postData, setPostData] = useState([]);
 
     const [error, setError] = useState(false);
 
-    // useEffect(() => {
-    //     if (Object.keys(user).length > 0) {
-    //         setNombre(user.nombre)
-    //         setPropietario(user.propietario)
-    //         setEmail(user.email)
-    //         setFecha(user.fecha)
-    //         setSintomas(user.sintomas)
-
-            
-    //     } else {
-    //         console.log('vacio')
-    //     }
-    // }, [paciente])
-
-  
-
-    // const generarId = () => {
-    //     const random = Math.random().toString(36).substr(2);
-    //     const fecha = Date.now().toString(36)
-
-    //     return fecha + random;
-    // }
-    
 
     
-    const handleSubmit = (e) => {
+    const handleSubmit =  async(e) => {
         e.preventDefault();
+        
+        
 
         // FORM VALIDATION
-        if ([categoria, contactId, contactName, contactNumber, img, item, price].includes('')) {
+        
+        
+        // setPostData([...postData, objetoPaciente]);
+         if ([categoria, contactId, contactName, contactNumber, img, item, price].includes('')) {
             console.log("Hay al menos un campo vacío")
             setError(true);
             return;
-        }
+         }
+        
+        const objetoUser = { 
+            categoria: categoria,
+            contactId: contactId,
+            contactName: contactName,
+            contactNumber: contactNumber,
+            img: img,
+            item: item,
+            price: price
+            
+        };
+        const colRef = collection(db, 'Products')
+        await addDoc(colRef, objetoUser)
+        // () => createDoc(objetoUser);
         setError(false);
 
         //OBJETO USER
-        const objetoUser = {
-            categoria,
-            contactId,
-            contactName,
-            contactNumber,
-            img,
-            item,
-            price
-            
-        }
-        setPostData(objetoUser);
-        const firebaseUrl = firebaseConfig.firebaseUrl;
-
-        fetch(`${firebaseUrl}/Products.json`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(postData),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('Data posted:', data);
-            })
-            .catch((error) => {
-                console.error('Error posting data:', error);
-            });
         
-  
-
-
-        // if (paciente.id) {
-        //     //EDITANDO REGISTRO
-        //     objetoPaciente.id = paciente.id
-        //     console.log(objetoPaciente)
-        //     console.log(paciente)
-
-        //     const pacientesActualizados = pacientes.map(pacienteState => pacienteState.id === paciente.id ? objetoPaciente : pacienteState)
-        //     setPacientes(pacientesActualizados)
-        //     setPaciente({})
-
-
-        // } else {
-        //     //NUEVO REGISTRO
-        //     objetoPaciente.id = generarId();
-        //     setPacientes([...pacientes, objetoPaciente]);
-        // }
-
+        // console.log(postData);
+        
         
 
         //REINICIAMOS EL FORM
-        setEmail('')
-        setFecha('')
-        setNombre('')
-        setSintomas('')
-        setPropietario('')
+        setCategoria('')
+        setContactId('')
+        setContactName('')
+        setContactNumber('')
+        setImg('')
+        setItem('')
+        setPrice('')
 
         
         console.log("enviando form");
@@ -128,7 +84,7 @@ const Formulario = () => {
                 <form onSubmit={handleSubmit}
                 
                     className='bg-white shadow-md rounded-lg py-10 px-5 mb-10' >
-                    {error && <Error mensaje='Todos los campos son obligatorios' />}
+                    {/* {error && <Error mensaje='Todos los campos son obligatorios' />} */}
                     
                     <div className='mb-5'>
                         <label htmlFor="name" className='block text-gray-700 uppercase'>
@@ -172,18 +128,7 @@ const Formulario = () => {
                         />
                     </div>
 
-                    {/* <div className='mt-5'>
-                        <label htmlFor="contactId" className='block text-gray-700 uppercase'>
-                            Alta</label>
-
-                        <input
-                            id='contactId'
-                            type="number"
-                            className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md'
-                            value={contactId}
-                            onChange={(e) => setContactId(e.target.value)}
-                        />
-                    </div> */}
+      
 
                     <div className='mt-5'>
                         <label htmlFor="contactNumber" className='block text-gray-700 uppercase'>
@@ -224,6 +169,19 @@ const Formulario = () => {
                             className='border-2 w-full p-2 mt-2 mb-5 placeholder-gray-400 rounded-md'
                             value={img}
                             onChange={(e) => setImg(e.target.value)}
+                        />
+                    </div>
+
+                    <div className='mt-5'>
+                        <label htmlFor="contactId" className='block text-gray-700 uppercase'>
+                            Cedula</label>
+
+                        <input
+                            id='contactId'
+                            type="text"
+                            className='border-2 w-full p-2 mt-2 mb-5 placeholder-gray-400 rounded-md'
+                            value={contactId}
+                            onChange={(e) => setContactId(e.target.value)}
                         />
                     </div>
 
