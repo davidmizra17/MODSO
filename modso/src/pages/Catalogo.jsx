@@ -20,11 +20,13 @@ import Card from '../components/posts/card';
         return (
             <div>
                 <Header />
-                <h1>Catalogo</h1>
+                <div className="flex justify-center text-7xl tracking-wide underline decoration-yellow-500">
+                    <h1>Catalogo</h1>
+                </div><br/>
                 <div class="flex flex-wrap justify-center">
                 <div className="grid grid-cols-3 gap-8">
                     {products.map((product) => (
-                        <Card product={product} />
+                        <Card key={product.key} product={product} />
                     ))}
                     </div>
                     </div>
