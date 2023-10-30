@@ -24,7 +24,7 @@ import Card from '../components/posts/card';
                 const docs = snapshots.docs.map((doc) => doc.data());
                 setProducts(docs);
             };
-            fetchProducts();
+            fetchProducts(); 
         }, []);
 
         return (
