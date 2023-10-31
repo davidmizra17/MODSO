@@ -4,6 +4,8 @@ import { db, auth } from '../../../firebase/config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, getDocs } from 'firebase/firestore'
 import Header from '../Header';
+import RegisterForm from '../Register/RegisterForm';
+import { Link } from 'react-router-dom';
 
 const LoginForm = () => {
   const { user, setUser } = useContext(UserContext);
@@ -29,6 +31,8 @@ const LoginForm = () => {
       
       await signInWithEmailAndPassword(auth, values.email, values.password);
       console.log("successfully logged in mf")
+      const  loggedUser  = values;
+      localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
       // setLoading(false);
       //console.log("LOGIN_PASSWOROD");
       
@@ -70,7 +74,10 @@ const LoginForm = () => {
               >
                 {" "}
                 Continuar{" "}
-          </button>
+        </button>
+        <div className='cen'>
+         <p> ¿No te encuentras registrado? <Link to="/register">Regístrate aquí</Link></p>
+        </div>
       </ form>
     </ div>
   )

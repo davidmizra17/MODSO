@@ -15,14 +15,19 @@ export default function UserContextProvider({ children }) {
                 const snapshots = await getDocs(colRef);
                 const docs = snapshots.docs.map((doc) => doc.data());
                 setUser(docs);
-                console.log(docs)
+            console.log(docs)
+            
             };
             fetchUser(); 
         }, []);
 
-    const createUser = async (user, uid) => {
-      await db.collection('users').doc(uid).set(user);
-    };
+    const colRef = collection(db, 'users')
+    
+    const createUser = async (user) => {
+        await addDoc(colRef, user)
+    }
+        
+  
   
     // const getUserByEmail = async (email) => {
     //   const usersReference = db.collection('users');
