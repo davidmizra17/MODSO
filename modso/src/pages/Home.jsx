@@ -4,6 +4,7 @@ import Contact from "../components/landing/Contact";
 import Hero from "../components/landing/Hero";
 import Brands from "../components/landing/Brands";
 
+
 export default function Home() {
   return (
     <>

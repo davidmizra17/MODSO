@@ -26,6 +26,15 @@ export default function Header() {
           >
             Ver catalogo
           </button></Link>
+          <Link to="login">
+            <button
+            className="bg-primary-500 px-6 py-4 rounded-full
+            text-2xl text-white uppercase transition
+             hover:bg-primary-400 hover:scale-95
+             active:bg-primary-700"
+          >
+            Iniciar Sesion
+          </button></Link>
         </ul>
       </nav>
     </header>
