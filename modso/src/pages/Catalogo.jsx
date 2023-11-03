@@ -37,26 +37,26 @@ import Card from '../components/posts/card';
         return (
             <div>
                 <Header />
-                <div class="relative">
+                <div className="relative">
                 <div className="flex justify-center text-7xl tracking-wide underline decoration-yellow-500">
                     <h1>Catálogo</h1>
                     </div><br />
                     <Box sx={{ width: 500, height: 450, overflowY: 'scroll' }} class="flex flex-wrap justify-center">
                          <ImageList variant="masonry" cols={6} gap={8}>
         {itemData.map((item) => (
-          <ImageListItem key={item.img}>
-            <img
-              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-              src={`${item.img}?w=248&fit=crop&auto=format`}
-                    alt={item.item}
-                    loading="lazy"
-                    
-                />
-                <a>{item.item}</a>
-          </ImageListItem>
+            <ImageListItem key={item.img} className="relative group">
+  <img
+    srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+    src={`${item.img}?w=248&fit=crop&auto=format`}
+    alt={item.item}
+    loading="lazy"
+    className="static rounded-2xl shadow-lg"
+                    />
+  <a className='invisible transition cursor-pointer group-hover:visible rounded-2xl hover:bg-opacity-60 bg-black absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center text-white'>Abrir</a>
+</ImageListItem>
         ))}
       </ImageList>
-                <div class="flex flex-wrap justify-center">
+                <div className="flex flex-wrap justify-center">
                 <div className="grid grid-cols-3 gap-8">
                     {products.map((product) => (
                         <Card key={product.key} product={product} />
