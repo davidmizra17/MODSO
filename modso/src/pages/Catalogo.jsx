@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import { Image,Space, Modal, Button } from 'antd';
 import Header from '../components/Header';
 import Formulario from './Formulario'
 import Card from '../components/posts/card';

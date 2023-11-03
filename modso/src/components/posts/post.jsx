@@ -19,7 +19,9 @@ const Post = ({ product }) => {
                 <Modal
                         className=""
                         centered
-                        open={open}
+                    open={open}
+                    okText="Salir"
+                    cancelText="Comprar"
                         onOk={() => setOpen(false)}
                         onCancel={() => setOpen(false)}
                         width={1000}
@@ -27,9 +29,11 @@ const Post = ({ product }) => {
                     <Image
                         src={product.img}
                         alt={product.item}
-                        loading="lazy" />
-                    <p>some contents...</p>
-                    <p>some contents...</p>
+                        loading="lazy"
+                    className="flex justify-items-center"/>
+                    <p>{product.item}</p>
+                    <p>${product.price}</p>
+                    <p>{product.categoria}</p>
                 </Modal></>
         );
     }
