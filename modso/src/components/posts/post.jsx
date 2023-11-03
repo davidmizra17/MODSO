@@ -25,12 +25,15 @@ const Post = ({ product }) => {
                         onOk={() => setOpen(false)}
                         onCancel={() => setOpen(false)}
                         width={1000}
-                    >
+                >
+                    <div className="flex items-center justify-center">
                     <Image
-                        src={product.img}
-                        alt={product.item}
+                            srcSet={product.img}
+                            src={product.img}
+                            alt={product.item}
+                            width={400}
                         loading="lazy"
-                    className="flex justify-items-center"/>
+                    /></div>
                     <p>{product.item}</p>
                     <p>${product.price}</p>
                     <p>{product.categoria}</p>
