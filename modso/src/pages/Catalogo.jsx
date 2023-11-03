@@ -4,14 +4,16 @@ import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import { Image } from 'antd';
+import { Image,Space, Modal, Button } from 'antd';
 import Header from '../components/Header';
 import Formulario from './Formulario'
 import Card from '../components/posts/card';
 
     const Catalogo = () => {
         const [products, setProducts] = useState([]);
+        const [selectedItem, setSelectedItem] = useState(null);
         const [showModalSeller, setShowModalSeller] = useState(false);
+        const [open, setOpen] = useState(false);
 
         const openModalSeller = () => {
             setShowModalSeller(true);
@@ -37,26 +39,45 @@ import Card from '../components/posts/card';
         return (
             <div>
                 <Header />
-                <div class="relative">
+                <div className="relative">
                 <div className="flex justify-center text-7xl tracking-wide underline decoration-yellow-500">
                     <h1>Catálogo</h1>
                     </div><br />
-                    <Box sx={{ width: 500, height: 450, overflowY: 'scroll' }} class="flex flex-wrap justify-center">
+                    <Box sx={{ width: 500, height: 450, overflowY: 'scroll' }} class="flex flex-wrap justify-center px-20">
                          <ImageList variant="masonry" cols={6} gap={8}>
         {itemData.map((item) => (
-          <ImageListItem key={item.img}>
-            <img
-              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-              src={`${item.img}?w=248&fit=crop&auto=format`}
-                    alt={item.item}
-                    loading="lazy"
-                    
-                />
-                <a>{item.item}</a>
-          </ImageListItem>
+            <ImageListItem key={item.key} className="relative group ">
+  <img
+    srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+    src={`${item.img}?w=248&fit=crop&auto=format`}
+    alt={item.item}
+    loading="lazy"
+                    className="static rounded-2xl shadow-lg"
+
+                    />
+                <a className='invisible transition cursor-pointer group-hover:visible bg-opacity-60 rounded-2xl bg-black absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center text-white'
+                onClick={() => setOpen(true)}>Abrir</a>
+
+                <Modal
+                    className=""
+                    title="Modal 1000px width"
+                    centered
+        open={open}
+        onOk={() => setOpen(false)}
+        onCancel={() => setOpen(false)}
+        width={1000}
+      >
+                    <Image
+                        src={item.img}
+    alt={item.item}
+    loading="lazy"/>
+        <p>some contents...</p>
+        <p>some contents...</p>
+      </Modal>
+</ImageListItem>
         ))}
       </ImageList>
-                <div class="flex flex-wrap justify-center">
+                <div className="flex flex-wrap justify-center">
                 <div className="grid grid-cols-3 gap-8">
                     {products.map((product) => (
                         <Card key={product.key} product={product} />
