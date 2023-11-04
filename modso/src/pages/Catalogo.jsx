@@ -1,13 +1,20 @@
 import { db } from '../../firebase/config';
 import { collection, getDocs } from 'firebase/firestore'
 import { useState, useEffect } from 'react';
+import Box from '@mui/material/Box';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import { Skeleton } from '@mui/material';
+
 import Header from '../components/Header';
 import Formulario from './Formulario'
 import Card from '../components/posts/card';
+import Post from '../components/posts/post';
 
     const Catalogo = () => {
         const [products, setProducts] = useState([]);
-        const [showModalSeller, setShowModalSeller] = useState(false);
+        const [isImageLoaded, setIsImageLoaded] = useState(false);
+
 
         const openModalSeller = () => {
             setShowModalSeller(true);
@@ -24,17 +31,27 @@ import Card from '../components/posts/card';
                 const docs = snapshots.docs.map((doc) => doc.data());
                 setProducts(docs);
             };
-            fetchProducts();
+            fetchProducts(); 
         }, []);
 
         return (
-            <><div>
+            <div>
                 <Header />
-                <div class="relative">
+                <div className="relative">
                 <div className="flex justify-center text-7xl tracking-wide underline decoration-yellow-500">
                     <h1>Catálogo</h1>
-                </div><br/>
-                <div class="flex flex-wrap justify-center">
+                    </div><br />
+                    <Box sx={{ width: 500, height: 450, overflowY: 'scroll' }} class="flex flex-wrap justify-center px-20">
+                        <ImageList variant="masonry" cols={6} gap={8}>
+        {products.map((product) => (
+            <ImageListItem key={product.key} product={product} className="relative group">
+                
+                <Post key={product.key} product={product} onLoad={() => setIsImageLoaded(true)} hidden={!isImageLoaded} />
+                    </ImageListItem>
+        ))}
+        </ImageList>
+            
+                <div className="flex flex-wrap justify-center">
                 <div className="grid grid-cols-3 gap-8">
                     {products.map((product) => (
                         <Card key={product.key} product={product} />
@@ -46,17 +63,21 @@ import Card from '../components/posts/card';
                         style={{ position: 'fixed' }} onClick={openModalSeller}
                     >
                         Vender ahora 
-                    </ button>
+                        </ button>
+                        </Box>
                 </div>
                 </div>
-                {showModalSeller && (
+                
+                
+        );
+        {/*showModalSeller && (
                     <div className="fixed z-10 inset-0">
                         <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                             <div
                                 className="absolute inset-0 transition-opacity "
                                 
                             >
-                             <div className="fixed inset-0 overflow-y-scroll" aria-hidden="true" >   
+                             <div className="fixed inset-0 overflow-y-scroll" aria-hidden="true" >
                                 <div className="absolute inset-0 bg-gray-500 opacity-75">
                                 </div>
                                 <div
@@ -81,9 +102,9 @@ import Card from '../components/posts/card';
                                 </div>
                             </div>
                         </div>
-                )}
-                </>
-        );
+                )*/}
     };
 
-        export default Catalogo;
+export default Catalogo;
+        
+
