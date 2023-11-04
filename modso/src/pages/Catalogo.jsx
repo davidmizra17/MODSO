@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import { Skeleton } from '@mui/material';
+
 import Header from '../components/Header';
 import Formulario from './Formulario'
 import Card from '../components/posts/card';
@@ -11,6 +13,8 @@ import Post from '../components/posts/post';
 
     const Catalogo = () => {
         const [products, setProducts] = useState([]);
+        const [isImageLoaded, setIsImageLoaded] = useState(false);
+
 
         const openModalSeller = () => {
             setShowModalSeller(true);
@@ -41,7 +45,8 @@ import Post from '../components/posts/post';
                         <ImageList variant="masonry" cols={6} gap={8}>
         {products.map((product) => (
             <ImageListItem key={product.key} product={product} className="relative group">
-                <Post key={product.key} product={product} />
+                
+                <Post key={product.key} product={product} onLoad={() => setIsImageLoaded(true)} hidden={!isImageLoaded} />
                     </ImageListItem>
         ))}
         </ImageList>

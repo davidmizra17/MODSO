@@ -24,7 +24,14 @@ const Post = ({ product }) => {
                     cancelText="Comprar"
                         onOk={() => setOpen(false)}
                         onCancel={() => setOpen(false)}
-                        width={1000}
+                    width={1000}
+                    footer={[<Button key="back" onClick={() => setOpen(false)}>
+                        Comprar
+                
+                    </Button>,
+                    <Button key="back" onClick={() => setOpen(false)}>
+                        Salir
+                        </Button>]}
                 >
                     <div className="flex items-center justify-center">
                     <Image
