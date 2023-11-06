@@ -74,11 +74,11 @@ import Post from '../components/posts/post';
                 </div>
 
                 <Button type="primary" onClick={showModal}>
-        Open Modal with async logic
+        
       </Button>
                 <Modal
                     centered
-        title="Title"
+        
         open={open}
         onOk={handleOk}
         confirmLoading={confirmLoading}
