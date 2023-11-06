@@ -17,7 +17,7 @@ export default function Header() {
           {/*<li>Productos</li>
           <li>Login</li>*/}
 
-          <Link to="catalogo">
+          <Link to="/catalogo">
             <button
             className="bg-primary-500 px-6 py-4 rounded-full
             text-2xl text-white uppercase transition
@@ -26,7 +26,7 @@ export default function Header() {
           >
             Ver catalogo
           </button></Link>
-          <Link to="login">
+          <Link to="/login">
             <button
             className="bg-primary-500 px-6 py-4 rounded-full
             text-2xl text-white uppercase transition

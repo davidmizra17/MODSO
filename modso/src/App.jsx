@@ -9,20 +9,20 @@ import UserContextProvider from "./context/userContext.jsx";
 
 export default function App() {
   return (
-    <>
-      <UserContextProvider>
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<Home />} />
-          <Route path="catalogo" element={<Catalogo />} />
-          <Route path="formulario" element={<Formulario />} />
-          <Route path="login" element={ <LoginForm /> } />
-          <Route path="register" element={ <RegisterForm /> } />
-          
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-        </BrowserRouter>
-        </UserContextProvider>
-    </>
-  );
+  <>
+    <UserContextProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/catalogo" element={<Catalogo />} />
+          <Route path="/formulario" element={<Formulario />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/register" element={<RegisterForm />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </BrowserRouter>
+    </UserContextProvider>
+  </>
+);
+  
 }
