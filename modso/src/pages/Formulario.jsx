@@ -82,7 +82,7 @@ const Formulario = ({ closeModal }) => {
                 </h2>
                 <form onSubmit={handleSubmit}
                 
-                    className='bg-white shadow-md rounded-lg' >
+                    className='bg-white rounded-lg' >
                     {/* {error && <Error mensaje='Todos los campos son obligatorios' />} */}
                     
                     <div className='mb-5'>
