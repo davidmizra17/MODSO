@@ -25,11 +25,11 @@
 
 ## To-Do list
 
-- [ ] Crear DB Firebase
-- [ ] Host Firebase
-- [ ] React crear ventanas:
-  - [ ] Landing Page (presentacion de efecto diferenciador)
-  - [ ] Vista general products (Buscador)
-  - [ ] Post producto (Subir el producto)
-  - [ ] Vista Post (Mostrar el producto)
-  - [ ] Pop-up contacto (Mostrar info vendedor)
+- [x] Crear DB Firebase
+- [x] Host Firebase
+- [x] React crear ventanas:
+  - [x] Landing Page (presentacion de efecto diferenciador)
+  - [x] Vista general products (Buscador)
+  - [x] Post producto (Subir el producto)
+  - [x] Vista Post (Mostrar el producto)
+  - [x] Pop-up contacto (Mostrar info vendedor)
