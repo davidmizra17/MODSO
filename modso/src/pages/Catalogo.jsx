@@ -73,9 +73,6 @@ import Post from '../components/posts/post';
                     </Box>
                 </div>
 
-                <Button type="primary" onClick={showModal}>
-        
-      </Button>
                 <Modal
                     centered
         
@@ -91,7 +88,6 @@ import Post from '../components/posts/post';
             </div> 
             );
 };
-
 
 export default Catalogo;
         

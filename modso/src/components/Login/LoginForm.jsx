@@ -6,8 +6,12 @@ import { collection, getDocs } from 'firebase/firestore'
 import Header from '../Header';
 import RegisterForm from '../Register/RegisterForm';
 import { Link } from 'react-router-dom';
+import { Button, Modal } from 'antd';
 
-const LoginForm = () => {
+const LoginForm = ({ closeModal }) => {
+  const [open, setOpen] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [error, setError] = useState(false);
   const { user, setUser } = useContext(UserContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,6 +21,25 @@ const LoginForm = () => {
   })
   
   
+
+  const showModal = () => {
+    closeModal();
+    setOpen(true);
+  };
+
+  const handleOk = () => {
+    setModalText('The modal will be closed after two seconds');
+    setConfirmLoading(true);
+    setTimeout(() => {
+      setOpen(false);
+      setConfirmLoading(false);
+    }, 2000);
+  };
+
+  const handleCancel = () => {
+    console.log('Clicked cancel button');
+    setOpen(false);
+  };
   
   const handleOnChange = (e) => {
     const { value, name: inputName } = e.target;
@@ -40,9 +63,10 @@ const LoginForm = () => {
     }catch(e){
       //console.log(e.code)
       console.log("Usuario o Contraseña invalido, por favor verifique e intente de nuevo.")
+      showError()
       // setLoading(false);
     }
-    
+    closeModal();
   }
   return (
     <div>
@@ -68,17 +92,28 @@ const LoginForm = () => {
         />
         
          <button
-                className="mt-5 border-2 w-full p-2 placeholder-gray-400 rounded-md"
+                className="mt-5 border-2 w-full bg-primary-500 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-full"
                 type="submit"
                 onClick={handleSubmit}
               >
                 {" "}
                 Continuar{" "}
         </button>
-        <div className='cen'>
-         <p> ¿No te encuentras registrado? <Link to="/register">Regístrate aquí</Link></p>
+        <div >
+         <a className='hover:text-black cursor-default'> ¿No te encuentras registrado? </a> <a className='hover:text-primary-500' onClick={showModal} >Regístrate aquí</a>
         </div>
       </ form>
+      <Modal
+          centered
+        
+          open={open}
+          onOk={handleOk}
+          confirmLoading={confirmLoading}
+          onCancel={handleCancel}
+          footer={[]}
+        >
+          <br/><RegisterForm closeModal2={() => showModal(false)} />
+        </Modal>
     </ div>
   )
 }
