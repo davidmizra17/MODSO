@@ -6,6 +6,7 @@ import { collection, getDocs } from 'firebase/firestore'
 import Header from '../Header';
 import RegisterForm from '../Register/RegisterForm';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button, Modal } from 'antd';
 
 const LoginForm = ({ closeModal }) => {
@@ -19,6 +20,9 @@ const LoginForm = ({ closeModal }) => {
     email: "",
     password:""
   })
+
+  const navigate = useNavigate();
+  
   
   
 
@@ -58,6 +62,7 @@ const LoginForm = ({ closeModal }) => {
       localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
       // setLoading(false);
       //console.log("LOGIN_PASSWOROD");
+      navigate('/catalogo');
       
 
     }catch(e){
