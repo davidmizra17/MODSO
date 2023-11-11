@@ -85,16 +85,13 @@ const RegisterForm = () => {
         />
         
          <button
-                className="mt-5 border-2 w-full p-2 placeholder-gray-400 rounded-md"
+                className="mt-5 border-2 w-full bg-primary-500 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-full"
                 type="submit"
                 onClick={handleSubmit}
               >
                 {" "}
                 Continuar{" "}
         </button>
-        <div className='cen'>
-         <p> ¿Ya te encuentras registrado? Inicia Sesión  <Link to="/login">aquí</Link></p>
-        </div>
       </ form>
     </ div>
     
