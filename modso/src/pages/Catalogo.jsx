@@ -106,7 +106,7 @@ import Post from '../components/posts/post';
                             ))}
                         </ImageList>
                         < button
-                            className="bg-primary-500 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-full absolute bottom-2 right-4"
+                            className="bg-primary-700 hover:bg-primary-950 text-white font-bold py-2 px-4 rounded-full absolute bottom-2 right-4"
                             style={{ position: 'fixed' }} onClick={showModal}
                         >
                             Vender ahora

@@ -9,11 +9,19 @@ const Header = () => {
   const [confirmLoading, setConfirmLoading] = useState(false);
 
   const loggedUser = localStorage.getItem('loggedUser');
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
 
   const showModal = () => {
     setOpen(true);
   };
+  const handleOnClick = () => {
+    localStorage.clear();
+    refreshPage();
+
+  }
 
   const handleOk = () => {
     setModalText('The modal will be closed after two seconds');
@@ -47,7 +55,7 @@ const Header = () => {
           </Link>
           {/*<li>Productos</li>
           <li>Login</li>*/}
-
+          <button onClick={handleOnClick}>log out</button>
           <Link to="/catalogo">
             <button
               className="bg-primary-500 px-6 py-4 rounded-full

@@ -1,22 +1,18 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Image, Modal, Card, Button } from 'antd';
 import Grid from '@mui/material/Unstable_Grid2';
 import Box from '@mui/material/Box';
 
-function ChildModal() {
-    const [open, setOpen] = useState(false);
 
-  return (
-        <>
-      
-    </>
-  );
-}
 
 const Post = ({ product }) => {
+    
+    
     const [open, setOpen] = useState(false);
     const [open2, setOpen2] = useState(false);
+    const [compras, setCompras] = useState([]);
+    const [test, setTest] = useState('');
     
       const handleOpen = () => {
     setOpen(true);
@@ -25,9 +21,42 @@ const Post = ({ product }) => {
     setOpen(false);
   };
 
+  
+
+    const handleOnClick = () => {
+    // Update the compra object
+    
+    const updatedCompra = {
+    
+        vendedor: product.contactName,
+        telefono: product.contactNumber,
+        costo: product.price,
+    };
+        
+        console.log(updatedCompra);
+        setTest('hello');
+        const prueba = "hola";
+        setCompras([...compras, updatedCompra]);
+        console.log(compras);
+//               setCompras((prevCompras) => {
+    
+//                   const newCompras = [...prevCompras, updatedCompra];
+//                   console.log(newCompras);
+//                   return newCompras;
+//   });
+        // setCompras([...compras, updatedCompra]);
+        // console.log(compras[0]);
+    // setCompras((prevCompras) => [...prevCompras, updatedCompra]);
+
+
+
+  setOpen2(false);
+};
+
         return (
         
-            <><img
+            <>
+                <img
                 srcSet={`${product.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
                 src={`${product.img}?w=248&fit=crop&auto=format`}
                 alt={product.item}
@@ -70,20 +99,19 @@ const Post = ({ product }) => {
                                     <p className='text-lg font-semibold tracking-normal'>{product.item}</p>
                                     <button className='italic absolute right-4 text-md font-light cursor-default bg-primary-200 rounded-full p-2 '>{product.categoria}</button>
                                     <br/><br/>
-                    <p className='text-3xl font-extralight tracking-wide'>U$S {product.price}</p>
+                    <p className='text-3xl font-extralight tracking-wide'>US $ {product.price}</p>
                                     
                                     <br /><div className='flex justify-center'>
                                         <button className='bg-primary-500 w-full p-3 rounded-full text-white font-bold hover:bg-primary-700 cursor-pointer transition-all' onClick={() => setOpen2(true)}>
-                        Comprar
+                        Ver Info
                 
                     </button>
       <Modal title="Informacion del Vendedor" centered open={open2}
                         onOk={() => setOpen2(false)}
               onCancel={() => setOpen2(false)}
-          footer={[<button key='none' className='bg-primary-500 p-3 rounded-full text-white font-bold hover:bg-primary-700 cursor-pointer transition-all' onClick={() => setOpen2(false)}>
-                        Cerrar
-                
-                                            </button>]}>
+                                            footer={[<button key='none' className='bg-primary-500 p-3 rounded-full text-white font-bold hover:bg-primary-700 cursor-pointer transition-all' onClick={handleOnClick}>
+                        Comprar Ahora
+                </button>]}>
                                             <br />
                                             <div className=''>
                                             <a className='font-bold'> Vendedor: </a><a>{product.contactName}</a><br />

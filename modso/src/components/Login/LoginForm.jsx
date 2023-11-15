@@ -4,9 +4,10 @@ import { db, auth } from '../../../firebase/config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, getDocs } from 'firebase/firestore'
 import Header from '../Header';
-import RegisterForm from '../Register/RegisterForm';
+
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import RegisterForm from '../Register/RegisterForm';
 import { Button, Modal } from 'antd';
 
 const LoginForm = ({ closeModal }) => {
@@ -44,6 +45,9 @@ const LoginForm = ({ closeModal }) => {
     console.log('Clicked cancel button');
     setOpen(false);
   };
+  function refreshPage() {
+    window.location.reload(false);
+  }
   
   const handleOnChange = (e) => {
     const { value, name: inputName } = e.target;
@@ -62,7 +66,10 @@ const LoginForm = ({ closeModal }) => {
       localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
       // setLoading(false);
       //console.log("LOGIN_PASSWOROD");
-      navigate('/catalogo');
+      refreshPage();
+      navigate('/');
+      setOpen(false)
+      
       
 
     }catch(e){
@@ -71,7 +78,7 @@ const LoginForm = ({ closeModal }) => {
       showError()
       // setLoading(false);
     }
-    closeModal();
+    
   }
   return (
     <div>
@@ -117,7 +124,11 @@ const LoginForm = ({ closeModal }) => {
           onCancel={handleCancel}
           footer={[]}
         >
-          <br/><RegisterForm closeModal2={() => showModal(false)} />
+        <br /><RegisterForm
+          closeModal2={() => showModal(false)}
+          
+
+        />
         </Modal>
     </ div>
   )

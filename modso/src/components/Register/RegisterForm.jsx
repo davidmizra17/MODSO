@@ -3,9 +3,12 @@ import { auth, db } from '../../../firebase/config';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { UserContext } from '../../context/userContext';
 import { collection, getDocs, addDoc } from 'firebase/firestore'
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const RegisterForm = () => {
+  
+  
   
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -21,7 +24,7 @@ const RegisterForm = () => {
     confirmPassword: ''
 
   });
-
+  const navigate = useNavigate();
 
   const { user, setUser } = useContext(UserContext);
   const { createUser } = useContext(UserContext);
@@ -60,6 +63,19 @@ const RegisterForm = () => {
               password,
           );
     console.log(response.user.uid);
+   
+    const loggedUser = {
+     
+      name: name,
+      email: email,
+      password: password
+    }
+
+
+    localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
+
+    navigate('/');
+    setOpen(false);
 
       // await createUser(
       //   {
