@@ -18,6 +18,8 @@ import Post from '../components/posts/post';
         const [open, setOpen] = useState(false);
         const [confirmLoading, setConfirmLoading] = useState(false);
 
+        const loggedUser = localStorage.getItem('loggedUser');
+
 
   const showModal = () => {
     setOpen(true);
@@ -49,6 +51,7 @@ import Post from '../components/posts/post';
         }, []);
 
         return (
+            loggedUser != null ? (
             <div>
                 <Header />
                 <div className="relative">
@@ -86,7 +89,47 @@ import Post from '../components/posts/post';
       </Modal>
 
             </div> 
-            );
+            ) : (
+                <div>
+                <Header />
+                <div className="relative">
+                    <div className="flex justify-center text-7xl tracking-wide">
+                        <h1>Catálogo</h1>
+                    </div><br />
+                    <Box sx={{ width: 500, height: 450, overflowY: 'scroll' }} class="flex flex-wrap justify-center px-20">
+                        <ImageList variant="masonry" cols={6} gap={8}>
+                            {products.map((product) => (
+                                <ImageListItem key={product.key} product={product} className="relative group">
+                
+                                    <Post key={product.key} product={product} onLoad={() => setIsImageLoaded(true)} hidden={!isImageLoaded} />
+                                </ImageListItem>
+                            ))}
+                        </ImageList>
+                        < button
+                            className="bg-primary-500 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-full absolute bottom-2 right-4"
+                            style={{ position: 'fixed' }} onClick={showModal}
+                        >
+                            Vender ahora
+                        </ button>
+                    </Box>
+                </div>
+
+                <Modal
+                    centered
+        
+        open={open}
+        onOk={handleOk}
+        confirmLoading={confirmLoading}
+                    onCancel={handleCancel}
+                    footer={[]}
+      >
+        <Formulario closeModal={() => showModal(false)} />
+      </Modal>
+
+                </div>
+                )
+            
+        );
 };
 
 export default Catalogo;

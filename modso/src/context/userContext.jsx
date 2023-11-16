@@ -21,11 +21,7 @@ export default function UserContextProvider({ children }) {
             fetchUser(); 
         }, []);
 
-    const colRef = collection(db, 'users')
     
-    const createUser = async (user) => {
-        await addDoc(colRef, user)
-    }
         
   
   

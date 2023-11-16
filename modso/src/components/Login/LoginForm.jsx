@@ -4,8 +4,10 @@ import { db, auth } from '../../../firebase/config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, getDocs } from 'firebase/firestore'
 import Header from '../Header';
-import RegisterForm from '../Register/RegisterForm';
+
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import RegisterForm from '../Register/RegisterForm';
 import { Button, Modal } from 'antd';
 
 const LoginForm = ({ closeModal }) => {
@@ -19,6 +21,9 @@ const LoginForm = ({ closeModal }) => {
     email: "",
     password:""
   })
+
+  const navigate = useNavigate();
+  
   
   
 
@@ -40,7 +45,24 @@ const LoginForm = ({ closeModal }) => {
     console.log('Clicked cancel button');
     setOpen(false);
   };
+  function refreshPage() {
+    window.location.reload(false);
+  }
   
+  function deleteIndexedDB() {
+    const DB_NAME = 'firebaseLocalStorageDb'; // Reemplaza esto con el nombre de tu base de datos
+
+    const request = window.indexedDB.deleteDatabase(DB_NAME);
+
+    request.onerror = function(event) {
+      console.log("Error al eliminar la base de datos.");
+    };
+
+    request.onsuccess = function(event) {
+      console.log("Base de datos eliminada con éxito.");
+    };
+  }
+
   const handleOnChange = (e) => {
     const { value, name: inputName } = e.target;
     // //console.log({ inputName, value });
@@ -58,6 +80,11 @@ const LoginForm = ({ closeModal }) => {
       localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
       // setLoading(false);
       //console.log("LOGIN_PASSWOROD");
+      deleteIndexedDB()
+      refreshPage();
+      navigate('/');
+      setOpen(false)
+      
       
 
     }catch(e){
@@ -66,7 +93,7 @@ const LoginForm = ({ closeModal }) => {
       showError()
       // setLoading(false);
     }
-    closeModal();
+    
   }
   return (
     <div>
@@ -112,7 +139,11 @@ const LoginForm = ({ closeModal }) => {
           onCancel={handleCancel}
           footer={[]}
         >
-          <br/><RegisterForm closeModal2={() => showModal(false)} />
+        <br /><RegisterForm
+          closeModal2={() => showModal(false)}
+          
+
+        />
         </Modal>
     </ div>
   )
