@@ -49,6 +49,20 @@ const LoginForm = ({ closeModal }) => {
     window.location.reload(false);
   }
   
+  function deleteIndexedDB() {
+    const DB_NAME = 'firebaseLocalStorageDb'; // Reemplaza esto con el nombre de tu base de datos
+
+    const request = window.indexedDB.deleteDatabase(DB_NAME);
+
+    request.onerror = function(event) {
+      console.log("Error al eliminar la base de datos.");
+    };
+
+    request.onsuccess = function(event) {
+      console.log("Base de datos eliminada con éxito.");
+    };
+  }
+
   const handleOnChange = (e) => {
     const { value, name: inputName } = e.target;
     // //console.log({ inputName, value });
@@ -66,6 +80,7 @@ const LoginForm = ({ closeModal }) => {
       localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
       // setLoading(false);
       //console.log("LOGIN_PASSWOROD");
+      deleteIndexedDB()
       refreshPage();
       navigate('/');
       setOpen(false)
