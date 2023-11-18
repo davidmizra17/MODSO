@@ -23,7 +23,7 @@ const Post = ({ product }) => {
 
   
 
-    const handleOnClick = () => {
+    const handleOnClick = async () => {
     // Update the compra object
     
     const updatedCompra = {
