@@ -54,7 +54,17 @@ const Header = () => {
     loggedUser != null ?
       (
 
-    
+    // Boton logo, que tambine lleva a la pagina de inicio 
+    // de la aplicacion
+
+    // Ademas, se tiene el boton de home, para 
+    //simplificar lo antes hecho por el logo
+    // y se tiene el boton de ver catalogo, que
+    // lleva a la pagina de catalogo
+    // Finalmente, se lleva al boton de formulario de inicio de sesion
+    // o de cerrar sesion, dependiendo de si el usuario esta o no
+    // loggeado
+
     <header className="flex pb-20 mt-4 px-8 justify-between">
       <Link to="/"><img src={Logo} alt="Logo Modso" className="rounded-full max-md:w-32 max-md:h-32" /></Link>
 
@@ -69,6 +79,7 @@ const Header = () => {
           {/*<li>Productos</li>
           <li>Login</li>*/}
           <button onClick={handleOnClick}>log out</button>
+          
           <Link to="/catalogo">
             <button
               className="bg-primary-500 px-6 py-4 rounded-full
@@ -81,6 +92,7 @@ const Header = () => {
           
            
         </ul>
+        
         <Modal
           centered
         
@@ -94,10 +106,14 @@ const Header = () => {
         </Modal>
       </nav>
     </header>
-      
+      // En caso de que el usuario este loggeado
+      // se muestra el logo, el boton de home, el boton de ver catalogo y cerrar sesion
+      // de lo contrario, se muestra el logo, el boton de home, el boton de catalogo y el boton del modal de formulario de inicio de sesion
   
       ) : (
-
+      // A partir de ahora, esta el estilizador de los botones
+      // Anteriormente definidos
+      // y explicados
     <header className="flex pb-20 mt-4 px-8 justify-between">
       <Link to="/"><img src={Logo} alt="Logo Modso" className="rounded-full max-md:w-32 max-md:h-32" /></Link>
 
@@ -146,6 +162,8 @@ const Header = () => {
     </header>
       )
   );
-};
+}; 
+
+// Se exporta el header para que se pueda usar en todas las paginas
 
 export default Header;

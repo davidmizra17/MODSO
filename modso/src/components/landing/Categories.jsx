@@ -3,8 +3,15 @@ import womanImg from "../../assets/images/categories/woman.png";
 import manImg from "../../assets/images/categories/man.png";
 import childrenImg from "../../assets/images/categories/children.png";
 import { Link } from "react-router-dom";
+// Importa
 
+// Muestra un listado de las categorias de los productos
+// con sus respectivas imagenes representativas
+// y un link a la pagina del catalogo
 
+// Se ideaba crear una querry que filtrase por categorias
+// Pero no fue un requerimiento
+// Asi que se dejo de lado hasta tener mas tiempo
 export default function Categories() {
   const categories = [
     {

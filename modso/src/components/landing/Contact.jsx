@@ -1,7 +1,13 @@
 import { AiOutlineInstagram } from "react-icons/ai";
 import { BsWhatsapp } from "react-icons/bs";
-
 import { Link } from "react-router-dom";
+// Importa
+
+// Banda al final de la pagina de inicio
+// Que muestra las redes sociales 
+// Y un numero de telefono
+// A traves de las cuales se le puede contactar a la empresa
+// Y un link a la pagina de preguntas frecuentes
 
 export default function Contact() {
   return (
