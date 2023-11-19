@@ -8,6 +8,7 @@ import ImageListItem from '@mui/material/ImageListItem';
 import { Skeleton } from '@mui/material';
 import Header from '../components/Header';
 import Formulario from './Formulario'
+import Contact from '../components/landing/Contact';
 import Post from '../components/posts/post';
 
 // Se importan las librerias necesarias para el funcionamiento de la pagina
@@ -149,6 +150,8 @@ import Post from '../components/posts/post';
             
         );
 };
+
+      <Contact />
 
 // Se exporta el catalogo para que se pueda usar en otras paginas
 

@@ -73,10 +73,10 @@ const Header = () => {
           className="flex max-md:flex-col justify-center items-center text-xl uppercase 
           gap-4 md:gap-16"
         >
-          <Link to="/" >
+          {/*<Link to="/" >
             <li className="font-bold">Home</li>
           </Link>
-          {/*<li>Productos</li>
+          <li>Productos</li>
           <li>Login</li>*/}
           <button onClick={handleOnClick}>log out</button>
           
@@ -122,10 +122,10 @@ const Header = () => {
           className="flex max-md:flex-col justify-center items-center text-xl uppercase 
           gap-4 md:gap-16"
         >
-          <Link to="/" >
+          {/*<Link to="/" >
             <li className="font-bold">Home</li>
           </Link>
-          {/*<li>Productos</li>
+          <li>Productos</li>
           <li>Login</li>*/}
 
           <Link to="/catalogo">
