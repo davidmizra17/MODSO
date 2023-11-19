@@ -1,7 +1,3 @@
-  // vite.config.js
-  // https://vitejs.dev/config/
-  // Ayuda a definir las npm y dependencias
-  // necesarias para que la aplicacion corra
 {
   "name": "modso",
   "private": true,
