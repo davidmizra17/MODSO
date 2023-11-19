@@ -6,26 +6,33 @@ import { collection, getDocs } from 'firebase/firestore'
 export const UserContext = createContext(null);
 
 export default function UserContextProvider({ children }) { 
-    const [user, setUser] = useState([]);
-    
-    useEffect(() => {
-        const fetchUser = async () => {
-                
-                const colRef = collection(db, 'users');
-                const snapshots = await getDocs(colRef);
-                const docs = snapshots.docs.map((doc) => doc.data());
-                setUser(docs);
-            console.log(docs)
-            
-            };
-            fetchUser(); 
-        }, []);
+  const [user, setUser] = useState('');
 
-    const colRef = collection(db, 'users')
+  useEffect(() => {
     
-    const createUser = async (user) => {
-        await addDoc(colRef, user)
+    const storedUser = localStorage.getItem('loggedUser');
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      setUser(parsedUser);
     }
+  }, []);
+  
+  console.log(user.email)
+  console.log(user)
+    // useEffect(() => {
+    //     const fetchUser = async () => {
+                
+    //             const colRef = collection(db, 'users');
+    //             const snapshots = await getDocs(colRef);
+    //             const docs = snapshots.docs.map((doc) => doc.data());
+    //             setUser(docs);
+    //         console.log(docs)
+            
+    //         };
+    //         fetchUser(); 
+    //     }, []);
+
+    
         
   
   
@@ -45,7 +52,6 @@ export default function UserContextProvider({ children }) {
           value={{
             user,
             setUser,
-            // getUserByEmail,
           }}
         >
           {children}

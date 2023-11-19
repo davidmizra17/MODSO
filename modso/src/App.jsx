@@ -7,22 +7,27 @@ import LoginForm from "./components/Login/LoginForm.jsx";
 import RegisterForm from "./components/Register/RegisterForm.jsx";
 import UserContextProvider from "./context/userContext.jsx";
 
+// Se importan las librerias necesarias para el funcionamiento de la pagina
+
+// Archivo router de manejador de URLs
+// internos de la pagina
+
 export default function App() {
   return (
-    <>
-      <UserContextProvider>
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<Home />} />
-          <Route path="catalogo" element={<Catalogo />} />
-          <Route path="formulario" element={<Formulario />} />
-          <Route path="login" element={ <LoginForm /> } />
-          <Route path="register" element={ <RegisterForm /> } />
-          
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-        </BrowserRouter>
-        </UserContextProvider>
-    </>
-  );
+  <>
+    <UserContextProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/catalogo" element={<Catalogo />} />
+          <Route path="/formulario" element={<Formulario />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/register" element={<RegisterForm />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </BrowserRouter>
+    </UserContextProvider>
+  </>
+);
+  
 }

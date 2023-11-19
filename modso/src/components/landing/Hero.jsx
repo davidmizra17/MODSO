@@ -2,7 +2,14 @@ import { Link } from "react-router-dom";
 import womanImage from "../../assets/images/woman.webp";
 import wardrobeImage from "../../assets/images/wardrobe.jpg";
 import stackImage from "../../assets/images/stack.jpg";
+// Se importan las librerias necesarias para el funcionamiento de la pagina
 
+// El hermo es el mostrador comercial de la pagina de inicio 
+// Que muestra la imagen de una mujer, un armario y un stack de ropa
+// Y un texto que explica la funcion de la pagina
+// Con el factor diferenciador
+
+// Tambien llama a las marcas
 export default function Hero() {
   return (
     <section className="flex max-md:flex-col gap-4 justify-center bg-secondary-100 px-6 pb-16">

@@ -5,9 +5,14 @@ import { createDoc } from '../../crud';
 import { app, firebaseConfig, db } from '../.././firebase/config.js';
 import { doc, setDoc, collection, Timestamp, addDoc } from "firebase/firestore"; 
 
-    
+// Se importan las librerias necesarias para el funcionamiento de la pagina
+// y se importan los componentes necesarios para el funcionamiento de la pagina
+// como el header, el formulario, el post y el modal
 
 const Formulario = ({ closeModal }) => {
+// Se crea el modal del formulario de venta, para que se abra y cierre
+// manejando el catalogo
+
     const [categoria, setCategoria] = useState('');
     const [contactId, setContactId] = useState('');
     const [contactName, setContactName] = useState('');
@@ -16,8 +21,10 @@ const Formulario = ({ closeModal }) => {
     const [item, setItem] = useState('');
     const [price, setPrice] = useState('');
     const [postData, setPostData] = useState([]);
-
     const [error, setError] = useState(false);
+
+// Se crean los estados de los campos del formulario
+// para que el usuario pueda ingresar los datos necesarios
 
     function refreshPage() {
     window.location.reload(false);
@@ -30,14 +37,15 @@ const Formulario = ({ closeModal }) => {
 
         // FORM VALIDATION
         
-        
         // setPostData([...postData, objetoPaciente]);
          if ([categoria, contactId, contactName, contactNumber, img, item, price].includes('')) {
             console.log("Hay al menos un campo vacío")
             setError(true);
             return;
          }
-        
+        //  else if (isNaN(contactId)) {
+        //  else if (contactNumber.length !== 10) {
+
         const objetoUser = { 
             categoria: categoria,
             contactId: contactId,
@@ -48,12 +56,12 @@ const Formulario = ({ closeModal }) => {
             price: price
             
         };
+        // console.log(objetoUser);
         const colRef = collection(db, 'Products')
         await addDoc(colRef, objetoUser)
         
         setError(false);
-
-      
+              
         
         
 
@@ -68,21 +76,37 @@ const Formulario = ({ closeModal }) => {
 
         
         
-        console.log("enviando form");
+        // console.log("enviando form");
 
         closeModal();
         refreshPage();
     };
 
+    // const handleSubmit = async (e) => {
+    //Se crea el formulario de venta
     return (
         <div>
             
                 <h2 className='font-black text-3xl text-center'>
                     Inserte un producto
                 </h2>
-                <form onSubmit={handleSubmit}
                 
-                    className='bg-white shadow-md rounded-lg' >
+                <form onSubmit={handleSubmit}
+                // Creado el formulario, se le asignan los campos necesarios
+                // para que el usuario pueda ingresar los datos
+                // y se le asigna la funcion de submit para que se envien los datos
+
+                // Nombre es del vendedor
+                // Categoria es el tipo de producto
+                // Item es la descripcion del producto
+                // ContactNumber es el numero de contacto del vendedor
+                // Price es el precio del producto
+                // Img es la imagen del producto (URL porque FireStore no acepta imagenes)
+                // ContactId es la cedula del vendedor
+                // Se crea el objeto del producto, para que se envie a la base de datos
+                // y se recarga la pagina para que se vea en el catalogo
+            
+                    className='bg-white rounded-lg' >
                     {/* {error && <Error mensaje='Todos los campos son obligatorios' />} */}
                     
                     <div className='mb-5'>
@@ -195,5 +219,6 @@ const Formulario = ({ closeModal }) => {
     )
             }
   
-
+// Se exporta el formulario para que se pueda usar de modal en el catalogo
+// o en la futura vista del vendedor
 export default Formulario
