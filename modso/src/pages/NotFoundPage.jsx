@@ -1,4 +1,6 @@
-
+// Desc: 404 Page Not Found
+// Manejador de errores
+// cuando no existe el URL en el router
 const NotFoundPage = () => {
     return (
         <div>

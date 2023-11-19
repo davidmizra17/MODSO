@@ -4,6 +4,13 @@ import { Link } from "react-router-dom";
 import { Button, Modal } from 'antd';
 import LoginForm from "./Login/LoginForm";
 
+// Se importan las librerias necesarias para el funcionamiento de la pagina
+// y se importan los componentes necesarios para el funcionamiento de la pagina
+
+// El header se utiliza en todas las paginas
+// de la app, lo que permite un manejo facil de
+// la navegacion entre paginas
+
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
@@ -12,7 +19,8 @@ const Header = () => {
   function refreshPage() {
     window.location.reload(false);
   }
-
+// Define el usuario ingresado en la pagina
+// y permite que se cierre sesion
 
   const showModal = () => {
     setOpen(true);
@@ -22,6 +30,9 @@ const Header = () => {
     refreshPage();
 
   }
+// En caso de que no este iniciado sesion
+// Crea un modal para que el usuario pueda
+// iniciar sesion
 
   const handleOk = () => {
     setModalText('The modal will be closed after two seconds');
@@ -36,6 +47,8 @@ const Header = () => {
     console.log('Clicked cancel button');
     setOpen(false);
   };
+
+// handler de la ventana modal, para que se abra y cierre
 
   return (
     loggedUser != null ?

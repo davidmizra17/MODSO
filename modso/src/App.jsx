@@ -7,6 +7,11 @@ import LoginForm from "./components/Login/LoginForm.jsx";
 import RegisterForm from "./components/Register/RegisterForm.jsx";
 import UserContextProvider from "./context/userContext.jsx";
 
+// Se importan las librerias necesarias para el funcionamiento de la pagina
+
+// Archivo router de manejador de URLs
+// internos de la pagina
+
 export default function App() {
   return (
   <>
