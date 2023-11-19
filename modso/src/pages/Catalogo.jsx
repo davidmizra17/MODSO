@@ -109,7 +109,7 @@ import Post from '../components/posts/post';
                 <div>
                 <Header />
                 <div className="relative">
-                    <div className="flex justify-center text-7xl tracking-wide">
+                    <div className="flex justify-center text-7xl tracking-wide font-serif">
                         <h1>Catálogo</h1>
                     </div><br />
                     <Box sx={{ width: 500, height: 450, overflowY: 'scroll' }} class="flex flex-wrap justify-center px-20">
