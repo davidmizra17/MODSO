@@ -1,6 +1,9 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Image, Modal, Card, Button } from 'antd';
+import { addDoc, setDoc, collection, doc } from 'firebase/firestore';
+import { db } from '../../../firebase/config';
+import { UserContext } from '../../context/userContext';
 import Grid from '@mui/material/Unstable_Grid2';
 import Box from '@mui/material/Box';
 
@@ -13,17 +16,22 @@ const Post = ({ product }) => {
     const [open2, setOpen2] = useState(false);
     const [compras, setCompras] = useState([]);
     const [test, setTest] = useState('');
-    
+
+    const { user, setUser } = useContext(UserContext);
+
       const handleOpen = () => {
-    setOpen(true);
+    
+          setOpen(true);
   };
-  const handleClose = () => {
-    setOpen(false);
+  
+    const handleClose = () => {
+    
+        setOpen(false);
   };
 
   
 
-    const handleOnClick = () => {
+    const handleOnClick = async () => {
     // Update the compra object
     
     const updatedCompra = {
@@ -33,10 +41,36 @@ const Post = ({ product }) => {
         costo: product.price,
     };
         
-        console.log(updatedCompra);
+        // console.log(updatedCompra);
         setTest('hello');
         const prueba = "hola";
         setCompras([...compras, updatedCompra]);
+        
+        const userEmail = user.email;
+
+        const encodedEmail = encodeURIComponent(userEmail);
+
+        // const ref = collection(db, 'users', "D22nFLwVIETYRiYGIt6j");
+        const userId = "D22nFLwVIETYRiYGIt6j";
+        const ref = doc(db, 'users', userId);
+
+        const addSale = async () => {
+            // setDoc(cityRef, { capital: true }, { merge: true });
+            await setDoc(ref, { compras: [...compras, updatedCompra] }, { merge: true });
+        }
+        addSale();
+         
+    //     const createUser = async () => {
+      
+    //         await addDoc(colRef, {
+        
+    //             name: name,
+    //             email: email,
+    //             password: password,
+    //             confirmPassword: confirmPassword
+    //     })
+    // }
+
         console.log(compras);
 //               setCompras((prevCompras) => {
     
