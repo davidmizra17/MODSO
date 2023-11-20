@@ -48,8 +48,6 @@ function refreshPage() {
         confirmPassword,
       });
     
-      
-
 
       const colRef = collection(db, 'users')
     
