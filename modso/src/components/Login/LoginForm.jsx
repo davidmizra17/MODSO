@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import RegisterForm from '../Register/RegisterForm';
 import { Button, Modal } from 'antd';
+import TextField from '@mui/material/TextField';
 
 const LoginForm = ({ closeModal }) => {
   const [open, setOpen] = useState(false);
@@ -90,7 +91,7 @@ const LoginForm = ({ closeModal }) => {
     }catch(e){
       //console.log(e.code)
       console.log("Usuario o Contraseña invalido, por favor verifique e intente de nuevo.")
-      showError()
+      setError(true);
       // setLoading(false);
     }
     
@@ -98,27 +99,35 @@ const LoginForm = ({ closeModal }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-              <input
-                className="mt-5 border-2 w-full p-2 placeholder-gray-400 rounded-md"
+        <div className="flex justify-center text-3xl font-bold tracking-wide">
+        <p>Iniciar Sesion</p>
+        </div>
+         { error && <p className='text-red-500 text-center font-bold tracking-wide'><br/>Usuario o Contraseña invalido, por favor verifique e intente de nuevo.</p> }
+          <br />
+        <TextField
+                className="mt-5 border-2 w-full p-2 placeholder-gray-400 rounded-md error"
                 name="email"
                 // id={styles.email}
                 type="email"
-                placeholder="Correo electrónico"
+          defaultValue="Correo electrónico"
+          label="Correo electrónico"
                 value={values.email}
                 onChange={handleOnChange}
+                error={error ? true : false}
               />
-
-              <input
+            <br/><br/>
+              <TextField
                 className="mt-5 border-2 w-full p-2 placeholder-gray-400 rounded-md"
                 name="password"
                 // id={styles.password}
-                type="password"
-                placeholder="Contraseña"
+          type="password"
+          label="Contraseña"
+                defaultValue="Contraseña"
                 value={values.password}
                 onChange={handleOnChange}
+                error={error ? true : false}
         />
-        
-         <button
+        <button
                 className="mt-5 border-2 w-full bg-primary-500 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-full"
                 type="submit"
                 onClick={handleSubmit}
@@ -130,6 +139,7 @@ const LoginForm = ({ closeModal }) => {
          <a className='hover:text-black cursor-default'> ¿No te encuentras registrado? </a> <a className='hover:text-primary-500' onClick={showModal} >Regístrate aquí</a>
         </div>
       </ form>
+     
       <Modal
           centered
         
