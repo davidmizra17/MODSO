@@ -99,7 +99,7 @@ import Post from '../components/posts/post';
       >
         <Formulario closeModal={() => showModal(false)} />
       </Modal>
-
+                <Contact />
             </div> 
 
 // Se crea el modal para que el usuario pueda vender un producto
