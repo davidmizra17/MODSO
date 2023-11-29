@@ -121,12 +121,6 @@ import Post from '../components/posts/post';
                                 </ImageListItem>
                             ))}
                         </ImageList>
-                        < button
-                            className="bg-primary-500 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-full absolute bottom-2 right-4"
-                            style={{ position: 'fixed' }} onClick={showModal}
-                        >
-                            Vender ahora
-                        </ button>
                     </Box>
                 </div>
                 <Modal
@@ -144,7 +138,7 @@ import Post from '../components/posts/post';
       >
         <Formulario closeModal={() => showModal(false)} />
       </Modal>
-
+        <Contact/>
                 </div>
                 )
             
