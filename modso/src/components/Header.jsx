@@ -17,7 +17,7 @@ const Header = () => {
 
   const loggedUser = localStorage.getItem('loggedUser');
   function refreshPage() {
-    window.location.reload(false);
+    window.location.reload();
   }
 // Define el usuario ingresado en la pagina
 // y permite que se cierre sesion
@@ -27,6 +27,7 @@ const Header = () => {
   };
   const handleOnClick = () => {
     localStorage.clear();
+    const loggedUser = null;
     refreshPage();
 
   }
@@ -73,12 +74,8 @@ const Header = () => {
           className="flex max-md:flex-col justify-center items-center text-xl uppercase 
           gap-4 md:gap-16"
         >
-          {/*<Link to="/" >
-            <li className="font-bold">Home</li>
-          </Link>
-          <li>Productos</li>
-          <li>Login</li>*/}
-          <button onClick={handleOnClick}>log out</button>
+          
+          <button onClick={handleOnClick}>Log out</button>
           
           <Link to="/catalogo">
             <button
