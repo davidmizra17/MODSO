@@ -28,7 +28,7 @@ const Header = () => {
   };
   const handleOnClick = () => {
     localStorage.clear();
-    localStorage.setItem(react-router-DOME.createKey()))
+    localStorage.setItem(createKey());
     refreshPage();
 
   }
