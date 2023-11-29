@@ -17,7 +17,7 @@ const Header = () => {
 
   const loggedUser = localStorage.getItem('loggedUser');
   function refreshPage() {
-    window.location.reload();
+    window.location.reload(false);
   }
 // Define el usuario ingresado en la pagina
 // y permite que se cierre sesion
@@ -27,7 +27,6 @@ const Header = () => {
   };
   const handleOnClick = () => {
     localStorage.clear();
-    const loggedUser = null;
     refreshPage();
 
   }
