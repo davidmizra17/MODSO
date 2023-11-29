@@ -10,6 +10,7 @@ import Header from '../components/Header';
 import Formulario from './Formulario'
 import Contact from '../components/landing/Contact';
 import Post from '../components/posts/post';
+import PostNoLogeado from '../components/posts/postNoLogged';
 
 // Se importan las librerias necesarias para el funcionamiento de la pagina
 // y se importan los componentes necesarios para el funcionamiento de la pagina
@@ -117,7 +118,7 @@ import Post from '../components/posts/post';
                             {products.map((product) => (
                                 <ImageListItem key={product.key} product={product} className="relative group" >
                 
-                                    <Post key={product.key} product={product} onLoad={() => setIsImageLoaded(true)} hidden={!isImageLoaded} />
+                                    <PostNoLogeado key={product.key} product={product} onLoad={() => setIsImageLoaded(true)} hidden={!isImageLoaded} />
                                 </ImageListItem>
                             ))}
                         </ImageList>

@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 
 
 
-const Post = ({ product }) => {
+const PostNoLogeado = ({ product }) => {
     
     
     const [open, setOpen] = useState(false);
@@ -136,22 +136,9 @@ const Post = ({ product }) => {
                                     
                                     <br /><div className='flex justify-center'>
                                         <button className='bg-primary-500 w-full p-3 rounded-full text-white font-bold hover:bg-primary-700 cursor-pointer transition-all' onClick={() => setOpen2(true)}>
-                        Ver Info
+                        Para ver la informacion del vendedor debe iniciar sesion
                 
                     </button>
-      <Modal title="Informacion del Vendedor" centered open={open2}
-                        onOk={() => setOpen2(false)}
-              onCancel={() => setOpen2(false)}
-                                            footer={[<button key='none' className='bg-primary-500 p-3 rounded-full text-white font-bold hover:bg-primary-700 cursor-pointer transition-all' onClick={handleOnClick}>
-                        Comprar Ahora
-                </button>]}>
-                                            <br />
-                                            <div className=''>
-                                            <a className='font-bold'> Vendedor: </a><a>{product.contactName}</a><br />
-                                            <a className='font-bold'> Telefono: </a><a>{product.contactNumber}</a><br /><br />
-                                                <a className='font-bold'> Costo U$S: </a><a>{product.price}</a><br />
-                                                </div>
-      </Modal>
                                 
                                         </div>
                                     </Card>
@@ -164,4 +151,4 @@ const Post = ({ product }) => {
         );
     }
 
-            export default Post;
+            export default PostNoLogeado;
