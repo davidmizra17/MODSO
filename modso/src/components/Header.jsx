@@ -3,6 +3,7 @@ import Logo from "../assets/images/logo.webp";
 import { Link } from "react-router-dom";
 import { Button, Modal } from 'antd';
 import LoginForm from "./Login/LoginForm";
+import createKey from "../../node_modules/.vite/deps/react-router-dom.js";
 
 // Se importan las librerias necesarias para el funcionamiento de la pagina
 // y se importan los componentes necesarios para el funcionamiento de la pagina
@@ -27,6 +28,7 @@ const Header = () => {
   };
   const handleOnClick = () => {
     localStorage.clear();
+    localStorage.setItem(react-router-DOME.createKey()))
     refreshPage();
 
   }
