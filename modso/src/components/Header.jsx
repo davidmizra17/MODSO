@@ -27,7 +27,6 @@ const Header = () => {
   };
   const handleOnClick = () => {
     localStorage.clear();
-    localStorage.setItem(Math.random().toString(36).substr(2, 8));
     refreshPage();
 
   }

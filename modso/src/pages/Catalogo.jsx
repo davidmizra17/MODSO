@@ -123,21 +123,6 @@ import Post from '../components/posts/post';
                         </ImageList>
                     </Box>
                 </div>
-                <Modal
-                    centered
-
-// Maneja el modal de cada producto, una vez creado el catalogo
-// para que el usuario pueda vender un producto
-// llenando el formulario
-
-        open={open}
-        onOk={handleOk}
-        confirmLoading={confirmLoading}
-                    onCancel={handleCancel}
-                    footer={[]}
-      >
-        <Formulario closeModal={() => showModal(false)} />
-      </Modal>
         <Contact/>
                 </div>
                 )
