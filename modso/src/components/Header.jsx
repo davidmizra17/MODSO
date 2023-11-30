@@ -27,7 +27,6 @@ const Header = () => {
   };
   const handleOnClick = () => {
     localStorage.clear();
-    refreshPage();
 
   }
 // En caso de que no este iniciado sesion
@@ -74,7 +73,7 @@ const Header = () => {
           gap-4 md:gap-16"
         >
           
-          <button onClick={handleOnClick}>Log out</button>
+          <Link to="/"><button onClick={handleOnClick}>Log out</button></Link>
           
           <Link to="/catalogo">
             <button

@@ -136,14 +136,14 @@ const Post = ({ product }) => {
                                     
                                     <br /><div className='flex justify-center'>
                                         <button className='bg-primary-500 w-full p-3 rounded-full text-white font-bold hover:bg-primary-700 cursor-pointer transition-all' onClick={() => setOpen2(true)}>
-                        Ver Info
+                        Comprar
                 
                     </button>
       <Modal title="Informacion del Vendedor" centered open={open2}
                         onOk={() => setOpen2(false)}
               onCancel={() => setOpen2(false)}
                                             footer={[<button key='none' className='bg-primary-500 p-3 rounded-full text-white font-bold hover:bg-primary-700 cursor-pointer transition-all' onClick={handleOnClick}>
-                        Comprar Ahora
+                        Listo
                 </button>]}>
                                             <br />
                                             <div className=''>

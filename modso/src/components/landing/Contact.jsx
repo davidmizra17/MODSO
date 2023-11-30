@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 export default function Contact() {
   return (
     <section>
-      <h1 className="text-center font-bold text-3xl pt-4 mb-4">FAQ</h1>
       <h1 className="text-center font-bold text-3xl pt-4 mb-4">Contact</h1>
 
       <main
