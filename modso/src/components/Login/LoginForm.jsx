@@ -83,10 +83,9 @@ const LoginForm = ({ closeModal }) => {
       //console.log("LOGIN_PASSWOROD");
       deleteIndexedDB()
       setTimeout(() => {
-        refreshPage();
         navigate('/');
       }, 2000);
-      
+      refreshPage();
       
       
 
