@@ -25,8 +25,11 @@ const Header = () => {
   const showModal = () => {
     setOpen(true);
   };
+
+
   const handleOnClick = () => {
-    localStorage.clear();
+    localStorage.clear();    
+    refreshPage();
 
   }
 // En caso de que no este iniciado sesion

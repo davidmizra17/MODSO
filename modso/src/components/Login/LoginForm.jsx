@@ -82,6 +82,7 @@ const LoginForm = ({ closeModal }) => {
       // setLoading(false);
       //console.log("LOGIN_PASSWOROD");
       deleteIndexedDB()
+      refreshPage();
       navigate('/');
       setOpen(false)
       
