@@ -81,7 +81,9 @@ const LoginForm = ({ closeModal }) => {
       localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
       // setLoading(false);
       //console.log("LOGIN_PASSWOROD");
+      deleteIndexedDB()
       refreshPage();
+      navigate('/');
       setOpen(false)
       
       
